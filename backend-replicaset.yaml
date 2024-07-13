@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: backend-replicaset
+  labels:
+    app: my-backend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: my-backend
+  template:
+    metadata:
+      labels:
+        app: my-backend
+    spec:
+      containers:
+      - name: backend
+        image: gaellopes/backend:v1.0
+        ports:
+        - containerPort: 8080

@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: database-replicaset
+  labels:
+    app: my-database
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: my-database
+  template:
+    metadata:
+      labels:
+        app: my-database
+    spec:
+      containers:
+      - name: database
+        image: gaellopes/banco-it-talent:v1
+        ports:
+        - containerPort: 5438
